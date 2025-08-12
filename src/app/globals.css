@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
+/* Light/Dark base */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #f8fafc;   /* slate-50 */
+  --foreground: #0f172a;   /* slate-900 */
+  --card: #ffffff;         /* white */
+  --muted: #e2e8f0;        /* slate-200 */
+  --ring:  221 83% 53%;    /* hsl for blue-600 fallback ring */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b1220;  /* deep navy */
+    --foreground: #e2e8f0;  /* slate-200 */
+    --card: #0f172a;        /* slate-900 */
+    --muted: #1e293b;       /* slate-800 */
   }
 }
 
+/* Tailwind v4 theme tokens */
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+
+  /* Primary palette (blue) */
+  --color-primary-50:  #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  /* Semantic shortcuts */
+  --color-primary: var(--color-primary-600);
+  --color-primary-foreground: #ffffff;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* Radius & shadows */
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --shadow-soft: 0 6px 24px rgba(2, 6, 23, 0.06);
+}
+
+/* Base element styles */
+html, body { height: 100%; }
+
 body {
-  background: var(--background);
+  background:
+    radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--color-primary-100) 35%, #fff 65%), transparent),
+    radial-gradient(800px 400px at 100% 0%, color-mix(in oklab, var(--color-primary-50) 40%, #fff 60%), transparent),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Reusable utility-ish classes */
+.btn {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-colors;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary {
+  @apply text-white;
+  background-color: var(--color-primary);
+}
+.btn-primary:hover {
+  /* can't @apply arbitrary values; use plain CSS for the hover color */
+  background-color: color-mix(in oklab, var(--color-primary) 90%, black 10%);
+}
+
+.btn-outline {
+  @apply border bg-white/70 hover:bg-white;
+  /* set custom colors via CSS properties (not @apply) */
+  border-color: color-mix(in oklab, var(--color-primary) 30%, #94a3b8 70%);
+  color: color-mix(in oklab, var(--color-primary) 60%, #0f172a 40%);
+}
+
+.card {
+  @apply rounded-xl border p-5;
+  background-color: var(--color-card);
+  border-color: color-mix(in oklab, #cbd5e1 70%, var(--color-primary) 30%);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Nav link style */
+.navlink { @apply text-sm opacity-90 hover:opacity-100 hover:text-primary transition-colors; }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
 }

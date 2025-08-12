@@ -9,9 +9,9 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
+    { href: "/resume", label: "Resume" }, // <-- now a page, not /resume.pdf
     { href: "https://github.com/casillasalejandro22", label: "GitHub", external: true },
     { href: "https://www.linkedin.com/in/casillasalejandro", label: "LinkedIn", external: true },
-    { href: "/resume.pdf", label: "Resume", external: true }, // treat as external
   ];
 
   return (
@@ -26,7 +26,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="navlink text-white hover:bg-white/10 px-3 py-1 rounded-lg transition-colors"
               >

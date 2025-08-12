@@ -5,8 +5,8 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
           Alejandro Casillas
         </h1>
-        <p className="text-lg sm:text-xl opacity-80">
-          Computer Science Student focused on geospatial systems, data tooling, and practical ML.
+        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light max-w-none text-center">
+          Computer Science Major at Virginia Tech looking for full-time Software Engineering Roles.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">

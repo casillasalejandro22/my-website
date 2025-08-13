@@ -28,7 +28,7 @@ export default function ResumePage() {
       </div>
 
       <p className="mt-3 text-xs opacity-70">
-        If the preview looks blank in some mobile browsers, use “Open PDF”.
+        If the preview appears blank in mobile browser, use “Open PDF”.
       </p>
     </section>
   );

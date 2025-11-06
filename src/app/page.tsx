@@ -33,7 +33,7 @@ export default function Home() {
 
         <div className="grid sm:grid-cols-3 gap-4 pt-6">
           <div className="card">
-            <p className="text-sm opacity-80">Interned at Cvent (Summer ’25), building geospatial matching diagnostics and “Match Reasons.”</p>
+            <p className="text-sm opacity-80">Interned at Cvent (Summer ’25), building geospatial matching diagnostics.</p>
           </div>
           <div className="card">
             <p className="text-sm opacity-80">Projects in ML + systems: J.O.K.R. trading, ML Algos repo, Flappy Bird game.</p>
